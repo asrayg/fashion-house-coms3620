@@ -10,7 +10,7 @@ import java.util.Scanner;
  * UC1: Create Collection
  * Actor: Design Manager
  *
- * TODO (your name): Implement createCollection() and listCollections().
+ * TODO Asray Gopa: Implement createCollection() and listCollections().
  */
 public class CollectionController {
 
@@ -48,19 +48,36 @@ public class CollectionController {
     // -------------------------------------------------------------------------
 
     private void createCollection() {
-        // TODO: Implement UC1 - Create Collection
-        //
-        // Steps:
-        //   1. Prompt for: name, season, releasePeriod, description
-        //   2. Validate none are blank
-        //   3. Load existing collections via FileManager.readLines(FILE)
-        //   4. Check for duplicate (same name + season) → print error and return if found
-        //   5. Generate ID with FileManager.nextId(FILE)
-        //   6. Build new Collection object
-        //   7. FileManager.appendLine(FILE, collection.toCSV())
-        //   8. Print confirmation
+        System.out.print("Collection name: ");
+        String name = scanner.nextLine().trim();
 
-        System.out.println("[TODO] createCollection() not yet implemented.");
+        System.out.print("Season (e.g. Summer 2025): ");
+        String season = scanner.nextLine().trim();
+
+        System.out.print("Release period (e.g. Jan-Mar 2025): ");
+        String releasePeriod = scanner.nextLine().trim();
+
+        System.out.print("Description: ");
+        String description = scanner.nextLine().trim();
+
+        if (name.isEmpty() || season.isEmpty() || releasePeriod.isEmpty() || description.isEmpty()) {
+            System.out.println("Error: All fields are required. Collection not created.");
+            return;
+        }
+
+        List<String> lines = FileManager.readLines(FILE);
+        for (String line : lines) {
+            Collection existing = Collection.fromCSV(line);
+            if (existing.getName().equalsIgnoreCase(name) && existing.getSeason().equalsIgnoreCase(season)) {
+                System.out.println("Error: A collection with that name and season already exists.");
+                return;
+            }
+        }
+
+        int id = FileManager.nextId(FILE);
+        Collection collection = new Collection(id, name, season, releasePeriod, description);
+        FileManager.appendLine(FILE, collection.toCSV());
+        System.out.println("Collection created successfully: " + collection);
     }
 
     // -------------------------------------------------------------------------
