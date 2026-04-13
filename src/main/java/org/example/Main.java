@@ -33,7 +33,7 @@ public class Main {
             switch (input) {
                 case "1" -> new CollectionController(scanner).menu();
                 case "2" -> new GarmentDesignController(scanner).menu();
-                case "3" -> new ProductSpecController(scanner).menu();
+                case "3" -> new ProductSpecificationController(scanner).menu();
                 case "4" -> new MaterialController(scanner).menu();
                 case "5" -> new MaterialOrderController(scanner).menu();
                 case "0" -> running = false;
