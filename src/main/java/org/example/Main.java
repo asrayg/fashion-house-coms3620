@@ -26,6 +26,8 @@ public class Main {
             System.out.println("3. Product Specifications      (UC3)");
             System.out.println("4. Material Registry           (UC4)");
             System.out.println("5. Material Orders             (UC5)");
+            // Iteration 2
+            System.out.println("8. Marketing & Campaigns       (UC3)");
             System.out.println("0. Exit");
             System.out.print("Select: ");
 
@@ -36,6 +38,7 @@ public class Main {
                 case "3" -> new ProductSpecificationController(scanner).menu();
                 case "4" -> new MaterialController(scanner).menu();
                 case "5" -> new MaterialOrderController(scanner).menu();
+                case "8" -> new AdCampaignController(scanner).menu();
                 case "0" -> running = false;
                 default  -> System.out.println("Invalid option. Try again.");
             }
