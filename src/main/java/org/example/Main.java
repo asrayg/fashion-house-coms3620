@@ -39,6 +39,8 @@ public class Main {
             System.out.println("8.  Manage Quality Checkpoints");
             System.out.println("9.  Plan Production Schedule");
             System.out.println("10. Generate Performance Report");
+            // Iteration 2
+            System.out.println("8. Marketing & Campaigns       (UC3)");
             System.out.println("0. Exit");
             System.out.print("Select: ");
 
@@ -46,7 +48,7 @@ public class Main {
             switch (input) {
                 case "1" -> new CollectionController(scanner).menu();
                 case "2" -> new GarmentDesignController(scanner).menu();
-                case "3" -> new ProductSpecController(scanner).menu();
+                case "3" -> new ProductSpecificationController(scanner).menu();
                 case "4" -> new MaterialController(scanner).menu();
                 case "5" -> new MaterialOrderController(scanner).menu();
                 case "6" -> productionAllocationController.allocateGarmentToProduction();
@@ -94,6 +96,7 @@ public class Main {
                         default -> System.out.println("Invalid option. Try again.");
                     }
                 }
+                case "8" -> new AdCampaignController(scanner).menu();
                 case "0" -> running = false;
                 default  -> System.out.println("Invalid option. Try again.");
             }
