@@ -23,15 +23,11 @@ public class GarmentDesignController {
         this.scanner = scanner;
     }
 
-    // -------------------------------------------------------------------------
-    // Menu
-    // -------------------------------------------------------------------------
-
     public void menu() {
         boolean back = false;
         while (!back) {
             System.out.println("\n--- Garment Design ---");
-            System.out.println("1. Add Garment Design");
+            System.out.println("1. Add Garment Design"); 
             System.out.println("2. List All Garments");
             System.out.println("0. Back");
             System.out.print("Select: ");
@@ -44,12 +40,8 @@ public class GarmentDesignController {
         }
     }
 
-    // -------------------------------------------------------------------------
-    // Use Case 2 — Add Garment Design
-    // -------------------------------------------------------------------------
-
+    
     private void addGarmentDesign() {
-    // Step 1: Prompt for collection ID
     System.out.print("Collection ID: ");
     String collectionIdInput = scanner.nextLine().trim();
     
@@ -66,14 +58,14 @@ public class GarmentDesignController {
         return;
     }
     
-    // Step 2: Verify collection exists
+    //check if collection exists
     Collection collection = CollectionController.findById(collectionId);
     if (collection == null) {
         System.out.println("Error: Collection with ID " + collectionId + " does not exist.");
         return;
     }
     
-    // Step 3: Prompt for garment details
+    
     System.out.print("Garment name: ");
     String name = scanner.nextLine().trim();
     
@@ -89,13 +81,13 @@ public class GarmentDesignController {
     System.out.print("Notes (optional): ");
     String notes = scanner.nextLine().trim();
     
-    // Step 4: Validate required fields
+    //validate required fields
     if (name.isEmpty() || type.isEmpty() || style.isEmpty() || targetAudience.isEmpty()) {
         System.out.println("Error: Name, type, style, and target audience are required fields.");
         return;
     }
     
-    // Step 5: Check for duplicate garment name in the same collection
+    //make sure no garment duplicates
     List<String> lines = FileManager.readLines(FILE);
     for (String line : lines) {
         GarmentDesign existing = GarmentDesign.fromCSV(line);
@@ -107,25 +99,21 @@ public class GarmentDesignController {
         }
     }
     
-    // Step 6: Generate new ID
+    //generating id for new garment design
     int id = FileManager.nextId(FILE);
     
-    // Step 7: Build GarmentDesign object
+    //garment design object w details
     GarmentDesign garment = new GarmentDesign(id, collectionId, name, type, 
                                               style, targetAudience, notes);
     
-    // Step 8: Save to file
     FileManager.appendLine(FILE, garment.toCSV());
     
-    // Step 9: Print confirmation
+
     System.out.println("Garment design added successfully!");
     System.out.println("Collection: " + collection.getName() + " (ID: " + collectionId + ")");
     System.out.println("Garment: " + garment);
 }
 
-    // -------------------------------------------------------------------------
-    // Helper — List Garments
-    // -------------------------------------------------------------------------
 
     private void listGarments() {
         List<String> lines = FileManager.readLines(FILE);
