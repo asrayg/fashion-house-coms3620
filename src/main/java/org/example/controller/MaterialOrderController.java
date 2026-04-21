@@ -49,20 +49,78 @@ public class MaterialOrderController {
     // -------------------------------------------------------------------------
 
     private void placeOrder() {
-        // TODO: Implement UC5 - Place Material Order
-        //
-        // Steps:
-        //   1. Prompt for material ID
-        //   2. Use MaterialController.findById(id) → error if null
-        //   3. Prompt for: supplierName, quantity, expectedDelivery (e.g. YYYY-MM-DD)
-        //   4. Parse quantity as int — reject if <= 0
-        //   5. Validate supplierName and expectedDelivery are not blank
-        //   6. Generate ID with FileManager.nextId(FILE)
-        //   7. Build MaterialOrder with status = PENDING
-        //   8. FileManager.appendLine(FILE, order.toCSV())
-        //   9. Print confirmation
+        // Precondition: at least one material must be registered
+        if (!FileManager.hasRecords(MaterialController.FILE)) {
+            System.out.println("Error: No materials registered. Please register a material first (Material Registry).");
+            return;
+        }
 
-        System.out.println("[TODO] placeOrder() not yet implemented.");
+        // Step 1: Show available materials, then prompt for material ID
+        System.out.println("\n--- Available Materials ---");
+        for (String line : FileManager.readLines(MaterialController.FILE)) {
+            System.out.println(Material.fromCSV(line));
+        }
+        System.out.print("\nEnter Material ID: ");
+        int materialId;
+        try {
+            materialId = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Material ID must be a whole number.");
+            return;
+        }
+
+        // Step 2: Verify material exists
+        Material material = MaterialController.findById(materialId);
+        if (material == null) {
+            System.out.println("Error: No material found with ID " + materialId + ".");
+            return;
+        }
+
+        // Step 3: Prompt for supplier name
+        System.out.print("Enter Supplier Name: ");
+        String supplierName = scanner.nextLine().trim();
+        if (supplierName.isEmpty()) {
+            System.out.println("Error: Supplier name cannot be blank.");
+            return;
+        }
+
+        // Step 4: Prompt for quantity and reject if <= 0
+        System.out.print("Enter Quantity: ");
+        int quantity;
+        try {
+            quantity = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Quantity must be a whole number.");
+            return;
+        }
+        if (quantity <= 0) {
+            System.out.println("Error: Quantity must be greater than 0.");
+            return;
+        }
+
+        // Step 5: Prompt for expected delivery date
+        System.out.print("Enter Expected Delivery Date (YYYY-MM-DD): ");
+        String expectedDelivery = scanner.nextLine().trim();
+        if (expectedDelivery.isEmpty()) {
+            System.out.println("Error: Expected delivery date cannot be blank.");
+            return;
+        }
+
+        // Step 6: Generate ID
+        int id = FileManager.nextId(FILE);
+
+        // Step 7: Build order with status PENDING
+        MaterialOrder order = new MaterialOrder(
+                id, materialId, supplierName, quantity, expectedDelivery,
+                MaterialOrder.Status.PENDING
+        );
+
+        // Step 8: Persist to file
+        FileManager.appendLine(FILE, order.toCSV());
+
+        // Step 9: Confirm
+        System.out.println("Material order placed successfully:");
+        System.out.println(order);
     }
 
     // -------------------------------------------------------------------------

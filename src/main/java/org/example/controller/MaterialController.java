@@ -10,7 +10,7 @@ import java.util.Scanner;
  * UC4: Register Material
  * Actor: Inventory Planner
  *
- * TODO (your name): Implement registerMaterial() and listMaterials().
+ * TODO Billy Dang: Implement registerMaterial() and listMaterials().
  */
 public class MaterialController {
 
@@ -48,19 +48,57 @@ public class MaterialController {
     // -------------------------------------------------------------------------
 
     private void registerMaterial() {
-        // TODO: Implement UC4 - Register Material
-        //
-        // Steps:
-        //   1. Prompt for: name, category, unitCost, stockLevel
-        //   2. Parse unitCost as double — reject if <= 0
-        //   3. Parse stockLevel as int — reject if < 0
-        //   4. Load existing materials; warn if same name already exists (but allow override)
-        //   5. Generate ID with FileManager.nextId(FILE)
-        //   6. Build Material object
-        //   7. FileManager.appendLine(FILE, material.toCSV())
-        //   8. Print confirmation
+        System.out.print("Material name: ");
+        String name = scanner.nextLine().trim();
 
-        System.out.println("[TODO] registerMaterial() not yet implemented.");
+        System.out.print("Category: ");
+        String category = scanner.nextLine().trim();
+
+        System.out.print("Unit cost: ");
+        double unitCost;
+        try {
+            unitCost = Double.parseDouble(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Unit cost must be a number.");
+            return;
+        }
+
+        System.out.print("Stock level: ");
+        int stockLevel;
+        try {
+            stockLevel = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Stock level must be a whole number.");
+            return;
+        }
+
+        if (name.isEmpty() || category.isEmpty()) {
+            System.out.println("Error: Material name and category are required.");
+            return;
+        }
+        if (unitCost <= 0) {
+            System.out.println("Error: Unit cost must be greater than 0.");
+            return;
+        }
+        if (stockLevel < 0) {
+            System.out.println("Error: Stock level cannot be negative.");
+            return;
+        }
+
+        List<String> lines = FileManager.readLines(FILE);
+        for (String line : lines) {
+            Material existing = Material.fromCSV(line);
+            if (existing.getName().equalsIgnoreCase(name)) {
+                System.out.println("Warning: A material with this name already exists.");
+                break;
+            }
+        }
+
+        int id = FileManager.nextId(FILE);
+        Material material = new Material(id, name, category, unitCost, stockLevel);
+        FileManager.appendLine(FILE, material.toCSV());
+
+        System.out.println("Material registered successfully: " + material);
     }
 
     // -------------------------------------------------------------------------
@@ -70,6 +108,8 @@ public class MaterialController {
     public void listMaterials() {
         List<String> lines = FileManager.readLines(FILE);
         if (lines.isEmpty()) {
+// [MermaidChart: 7ff4e30c-623b-4944-a514-da5e3c87642d]
+// [MermaidChart: 7ff4e30c-623b-4944-a514-da5e3c87642d]
             System.out.println("No materials on file.");
             return;
         }
