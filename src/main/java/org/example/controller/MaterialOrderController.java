@@ -33,11 +33,13 @@ public class MaterialOrderController {
             System.out.println("\n--- Material Orders ---");
             System.out.println("1. Place Material Order");
             System.out.println("2. List All Orders");
+            System.out.println("3. Receive Material Shipment");
             System.out.println("0. Back");
             System.out.print("Select: ");
             switch (scanner.nextLine().trim()) {
                 case "1" -> placeOrder();
                 case "2" -> listOrders();
+                case "3" -> receiveShipment();
                 case "0" -> back = true;
                 default  -> System.out.println("Invalid option.");
             }
@@ -137,6 +139,90 @@ public class MaterialOrderController {
         for (String line : lines) {
             System.out.println(MaterialOrder.fromCSV(line));
         }
+    }
+
+    // -------------------------------------------------------------------------
+    // Use Case — Receive Material Shipment
+    // -------------------------------------------------------------------------
+
+    private void receiveShipment() {
+        // Precondition: at least one open order must exist
+        List<MaterialOrder> openOrders = FileManager.readLines(FILE).stream()
+                .map(MaterialOrder::fromCSV)
+                .filter(o -> o.getStatus() == MaterialOrder.Status.PENDING
+                          || o.getStatus() == MaterialOrder.Status.PARTIALLY_RECEIVED)
+                .toList();
+
+        if (openOrders.isEmpty()) {
+            System.out.println("No pending shipments to receive.");
+            return;
+        }
+
+        System.out.println("\n--- Open Material Orders ---");
+        for (MaterialOrder o : openOrders) {
+            Material m = MaterialController.findById(o.getMaterialId());
+            String matName = (m != null) ? m.getName() : "Unknown";
+            System.out.printf("[%d] %s | Supplier: %s | Ordered: %d | Expected: %s | Status: %s%n",
+                    o.getId(), matName, o.getSupplierName(), o.getQuantity(),
+                    o.getExpectedDelivery(), o.getStatus());
+        }
+
+        System.out.print("\nEnter Order ID to receive against: ");
+        int orderId;
+        try {
+            orderId = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Order ID must be a whole number.");
+            return;
+        }
+
+        final int targetId = orderId;
+        MaterialOrder order = openOrders.stream()
+                .filter(o -> o.getId() == targetId)
+                .findFirst().orElse(null);
+        if (order == null) {
+            System.out.println("Error: No open order found with ID " + orderId + ".");
+            return;
+        }
+
+        System.out.printf("Order details: %s%n", order);
+        System.out.print("Enter quantity received in this shipment: ");
+        int received;
+        try {
+            received = Integer.parseInt(scanner.nextLine().trim());
+        } catch (NumberFormatException e) {
+            System.out.println("Error: Quantity must be a whole number.");
+            return;
+        }
+
+        if (received <= 0) {
+            System.out.println("Error: Quantity must be positive.");
+            return;
+        }
+        if (received > order.getQuantity()) {
+            System.out.println("Error: Cannot exceed ordered quantity of " + order.getQuantity() + ".");
+            return;
+        }
+
+        // Update order status
+        if (received == order.getQuantity()) {
+            order.setStatus(MaterialOrder.Status.RECEIVED);
+        } else {
+            order.setStatus(MaterialOrder.Status.PARTIALLY_RECEIVED);
+        }
+        update(order);
+
+        // Update material stock level
+        Material material = MaterialController.findById(order.getMaterialId());
+        if (material != null) {
+            material.setStockLevel(material.getStockLevel() + received);
+            MaterialController.update(material);
+            System.out.printf("Shipment recorded. %s stock updated to %d units.%n",
+                    material.getName(), material.getStockLevel());
+        } else {
+            System.out.println("Shipment recorded. (Warning: could not update stock — material not found.)");
+        }
+        System.out.println("Order status: " + order.getStatus());
     }
 
     /**
