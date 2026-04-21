@@ -33,6 +33,7 @@ public class DesignDepartmentController {
     static final String DEPT_FILE     = "data/design_departments.csv";
     static final String REVIEW_FILE   = "data/design_reviews.csv";
     static final String REVISION_FILE = "data/design_revisions.csv";
+    static final String ASSIGN_FILE   = "data/department_employee_assignments.csv";
 
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
@@ -96,6 +97,27 @@ public class DesignDepartmentController {
                 case "14" -> reviewAuditTrail();
                 case "0"  -> back = true;
                 default   -> System.out.println("Invalid option.");
+            }
+        }
+    }
+
+    public void employeeAssignmentMenu() {
+        boolean back = false;
+        while (!back) {
+            System.out.println("\n╔══════════════════════════════════════════════╗");
+            System.out.println("║      Employee-Department Assignments        ║");
+            System.out.println("╠══════════════════════════════════════════════╣");
+            System.out.println("║  1.  Assign Employee to Department          ║");
+            System.out.println("║  2.  View Department Employee Assignments   ║");
+            System.out.println("║  0.  Back                                   ║");
+            System.out.println("╚══════════════════════════════════════════════╝");
+            System.out.print("Select: ");
+
+            switch (scanner.nextLine().trim()) {
+                case "1" -> assignEmployeeToDepartment();
+                case "2" -> viewDepartmentEmployeeAssignments();
+                case "0" -> back = true;
+                default -> System.out.println("Invalid option.");
             }
         }
     }
@@ -1131,6 +1153,139 @@ public class DesignDepartmentController {
             }
         }
         System.out.println("╚══════════════════════════════════════════════════╝");
+    }
+
+    // =========================================================================
+    // 15. Assign Employee to Department
+    // =========================================================================
+
+    private void assignEmployeeToDepartment() {
+        System.out.println("\n--- Assign Employee to Department ---");
+
+        if (!FileManager.hasRecords(DEPT_FILE)) {
+            System.out.println("Error: No departments exist. Create a department first.");
+            return;
+        }
+
+        System.out.println("\nAvailable Departments:");
+        for (String line : FileManager.readLines(DEPT_FILE)) {
+            DesignDepartment dept = DesignDepartment.fromCSV(line);
+            System.out.println("  [" + dept.getId() + "] " + dept.getName() + " | Status: " + dept.getStatus()
+                             + " | Head: " + dept.getHeadDesigner());
+        }
+
+        System.out.print("Enter Department ID: ");
+        int deptId = readInt();
+        if (deptId == -1) return;
+
+        DesignDepartment dept = findDeptById(deptId);
+        if (dept == null) {
+            System.out.println("Error: Department not found.");
+            return;
+        }
+        if (dept.getStatus() == DesignDepartment.Status.CLOSED) {
+            System.out.println("Error: Cannot assign employees to a CLOSED department.");
+            return;
+        }
+
+        System.out.print("Employee full name: ");
+        String employeeName = scanner.nextLine().trim();
+        if (employeeName.isEmpty()) {
+            System.out.println("Error: Employee name is required.");
+            return;
+        }
+
+        System.out.print("Role (e.g. Designer, Pattern Maker, Illustrator): ");
+        String role = scanner.nextLine().trim();
+        if (role.isEmpty()) {
+            System.out.println("Error: Role is required.");
+            return;
+        }
+
+        List<String> lines = FileManager.readLines(ASSIGN_FILE);
+        for (String line : lines) {
+            String[] parts = line.split(",", -1);
+            if (parts.length < 6) continue;
+            int assignedDeptId;
+            try {
+                assignedDeptId = Integer.parseInt(parts[1].trim());
+            } catch (NumberFormatException e) {
+                continue;
+            }
+            String assignedEmployee = parts[2].trim();
+            String assignedStatus = parts[5].trim();
+            if (assignedEmployee.equalsIgnoreCase(employeeName)
+                    && assignedDeptId == deptId
+                    && assignedStatus.equalsIgnoreCase("active")) {
+                System.out.println("Error: Employee is already actively assigned to this department.");
+                return;
+            }
+        }
+
+        int id = FileManager.nextId(ASSIGN_FILE);
+        String assignedDate = LocalDate.now().format(DATE_FMT);
+        String status = "active";
+        String csv = id + "," + deptId + "," + employeeName + "," + role + "," + assignedDate + "," + status;
+        FileManager.appendLine(ASSIGN_FILE, csv);
+
+        System.out.println("Employee assigned successfully.");
+        System.out.println("Assignment ID: " + id + " | Employee: " + employeeName
+                         + " | Department: " + dept.getName() + " | Role: " + role);
+    }
+
+    // =========================================================================
+    // 16. View Department Employee Assignments
+    // =========================================================================
+
+    private void viewDepartmentEmployeeAssignments() {
+        List<String> lines = FileManager.readLines(ASSIGN_FILE);
+        if (lines.isEmpty()) {
+            System.out.println("No employee assignments on file.");
+            return;
+        }
+
+        System.out.print("Enter Department ID (or 0 for all): ");
+        int deptId = readInt();
+        if (deptId == -1) return;
+
+        if (deptId != 0 && findDeptById(deptId) == null) {
+            System.out.println("Error: Department not found.");
+            return;
+        }
+
+        int count = 0;
+        System.out.println("\n--- Department Employee Assignments ---");
+        for (String line : lines) {
+            String[] parts = line.split(",", -1);
+            if (parts.length < 6) continue;
+
+            int rowDeptId;
+            try {
+                rowDeptId = Integer.parseInt(parts[1].trim());
+            } catch (NumberFormatException e) {
+                continue;
+            }
+
+            if (deptId != 0 && rowDeptId != deptId) {
+                continue;
+            }
+
+            DesignDepartment rowDept = findDeptById(rowDeptId);
+            String deptName = (rowDept != null) ? rowDept.getName() : "Unknown";
+
+            System.out.println("[" + parts[0].trim() + "] " + parts[2].trim()
+                             + " | Role: " + parts[3].trim()
+                             + " | Department: " + deptName
+                             + " | Assigned: " + parts[4].trim()
+                             + " | Status: " + parts[5].trim());
+            count++;
+        }
+
+        if (count == 0) {
+            System.out.println("No assignments match the selected department.");
+        } else {
+            System.out.println("Total assignments shown: " + count);
+        }
     }
 
     // =========================================================================
