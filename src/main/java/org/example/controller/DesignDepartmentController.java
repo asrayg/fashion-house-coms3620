@@ -1202,7 +1202,7 @@ public class DesignDepartmentController {
     private ProductSpecification findSpecForGarment(int garmentId) {
         for (String line : FileManager.readLines(ProductSpecController.FILE)) {
             ProductSpecification s = ProductSpecification.fromCSV(line);
-            if (s.getGarmentId() == garmentId) return s;
+            if (s.getGarmentDesignId() == garmentId) return s;
         }
         return null;
     }
