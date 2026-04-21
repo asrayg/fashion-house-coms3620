@@ -32,8 +32,9 @@ public class Main {
             System.out.println("7.  Design Department           (Iter2)");
             System.out.println("8.  Marketing & Campaigns       (Iter2)");
             System.out.println("9.  Production Department       (Iter2)");
-            System.out.println("\n=== SALES (Iteration 2) ===");
-            System.out.println("10. Sales & Retail             (UC9)");
+            System.out.println("10. Sales & Retail              (UC9)");
+            System.out.println("11. Finance                     (Iter2)");
+            System.out.println("12. Administration              (Iter2)");
             System.out.println("0.  Exit");
             System.out.print("Select: ");
 
@@ -49,6 +50,8 @@ public class Main {
                 case "8" -> new AdCampaignController(scanner).menu();
                 case "9" -> new ProductionDepartmentController(scanner).menu();
                 case "10" -> new SalesRetailController(scanner).menu();
+                case "11" -> new FinanceController(scanner).menu();
+                case "12" -> new AdministrationController(scanner).menu();
                 case "0" -> running = false;
                 default  -> System.out.println("Invalid option. Try again.");
             }
