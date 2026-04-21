@@ -94,7 +94,7 @@ public class ProductionBatchController {
         System.out.println("\n--- Schedule Production Batch ---");
 
         // ---- Step 1: Check preconditions ----
-        if (!FileManager.hasRecords(ProductSpecController.FILE)) {
+        if (!FileManager.hasRecords(ProductSpecificationController.FILE)) {
             System.out.println("Error: No product specifications exist. Please define a specification first.");
             return;
         }
@@ -109,10 +109,10 @@ public class ProductionBatchController {
 
         // ---- Step 2: Display available specifications with linked garment + collection info ----
         System.out.println("\n--- Available Product Specifications ---");
-        List<String> specLines = FileManager.readLines(ProductSpecController.FILE);
+        List<String> specLines = FileManager.readLines(ProductSpecificationController.FILE);
         for (String line : specLines) {
             ProductSpecification spec = ProductSpecification.fromCSV(line);
-            GarmentDesign garment = GarmentDesignController.findById(spec.getGarmentId());
+            GarmentDesign garment = GarmentDesignController.findById(spec.getGarmentDesignId());
             String garmentInfo = (garment != null)
                 ? garment.getName() + " (" + garment.getType() + ", " + garment.getStyle() + ")"
                 : "Unknown Garment";
@@ -133,7 +133,7 @@ public class ProductionBatchController {
             System.out.println("Error: Specification ID must be a number.");
             return;
         }
-        ProductSpecification spec = ProductSpecController.findById(specId);
+        ProductSpecification spec = ProductSpecificationController.findById(specId);
         if (spec == null) {
             System.out.println("Error: Product specification with ID " + specId + " does not exist. Batch not scheduled.");
             return;
@@ -524,8 +524,8 @@ public class ProductionBatchController {
         }
 
         // Spec info
-        ProductSpecification spec = ProductSpecController.findById(batch.getSpecId());
-        GarmentDesign garment = (spec != null) ? GarmentDesignController.findById(spec.getGarmentId()) : null;
+        ProductSpecification spec = ProductSpecificationController.findById(batch.getSpecId());
+        GarmentDesign garment = (spec != null) ? GarmentDesignController.findById(spec.getGarmentDesignId()) : null;
         org.example.model.Collection collection = (garment != null) ? CollectionController.findById(garment.getCollectionId()) : null;
         ProductionLine line = findLineById(batch.getProductionLineId());
 
