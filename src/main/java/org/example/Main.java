@@ -17,7 +17,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("============================================");
-        System.out.println("   Fashion House Management System v1.0    ");
+        System.out.println("   Fashion House Management System v2.0    ");
         System.out.println("============================================");
 
         ProductionAllocationController productionAllocationController = new ProductionAllocationController(scanner);
@@ -34,6 +34,8 @@ public class Main {
             System.out.println("3. Product Specifications      (UC3)");
             System.out.println("4. Material Registry           (UC4)");
             System.out.println("5. Material Orders             (UC5)");
+            System.out.println("6. Production Batches          (UC6 - Iter2)");
+            System.out.println("7. Design Department           (Iter2)");
             System.out.println("6. Design Department           (Iter2)");
             System.out.println("\n=== PRODUCTION DEPARTMENT (Iteration 2) ===");
             System.out.println("7.  Allocate Garment to Production");
@@ -61,6 +63,10 @@ public class Main {
                 case "3" -> new ProductSpecificationController(scanner).menu();
                 case "4" -> new MaterialController(scanner).menu();
                 case "5" -> new MaterialOrderController(scanner).menu();
+                case "6" -> new ProductionBatchController(scanner).menu();
+                case "7" -> new DesignDepartmentController(scanner).menu();
+                case "6" -> productionAllocationController.allocateGarmentToProduction();
+                case "7" -> {
                 case "6" -> new DesignDepartmentController(scanner).menu();
                 case "7" -> productionAllocationController.allocateGarmentToProduction();
                 case "8" -> {
