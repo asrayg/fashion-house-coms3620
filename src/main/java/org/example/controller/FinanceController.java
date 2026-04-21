@@ -14,9 +14,11 @@ public class FinanceController {
         boolean back = false;
         while (!back) {
             System.out.println("\n--- Finance ---");
+            System.out.println("1. Payroll  (UC-FA2)");
             System.out.println("0. Back");
             System.out.print("Select: ");
             switch (scanner.nextLine().trim()) {
+                case "1" -> new PayrollController(scanner).menu();
                 case "0" -> back = true;
                 default  -> System.out.println("Invalid option.");
             }
