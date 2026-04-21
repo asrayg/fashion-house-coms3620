@@ -46,12 +46,16 @@ public class Main {
                 case "4" -> new MaterialController(scanner).menu();
                 case "5" -> new MaterialOrderController(scanner).menu();
                 case "6" -> new ProductionBatchController(scanner).menu();
-                case "7" -> new DesignDepartmentController(scanner).menu();
-                case "8" -> new AdCampaignController(scanner).menu();
-                case "9" -> new ProductionDepartmentController(scanner).menu();
-                case "10" -> new SalesRetailController(scanner).menu();
-                case "11" -> new FinanceController(scanner).menu();
-                case "12" -> new AdministrationController(scanner).menu();
+
+                case "7" -> new DesignDepartmentController(scanner).employeeAssignmentMenu();
+                case "8" -> new DesignDepartmentController(scanner).menu();
+  
+                case "9" -> new AdCampaignController(scanner).menu();
+                case "10" -> new ProductionDepartmentController(scanner).menu();
+                case "11" -> new SalesRetailController(scanner).menu();
+                case "12" -> new FinanceController(scanner).menu();
+                case "13" -> new AdministrationController(scanner).menu();
+
                 case "0" -> running = false;
                 default  -> System.out.println("Invalid option. Try again.");
             }
