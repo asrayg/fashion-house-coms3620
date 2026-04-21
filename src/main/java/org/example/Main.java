@@ -29,12 +29,12 @@ public class Main {
             System.out.println("4.  Material Registry           (UC4)");
             System.out.println("5.  Material Orders             (UC5)");
             System.out.println("6.  Production Batches          (UC6 - Iter2)");
-            System.out.println("7.  Assign Employee to Department (UC7 - Iter2)");
-            System.out.println("8.  Design Department           (Iter2)");
-            System.out.println("9.  Marketing & Campaigns       (Iter2)");
-            System.out.println("10. Production Department       (Iter2)");
-            System.out.println("\n=== SALES (Iteration 2) ===");
-            System.out.println("11. Sales & Retail             (UC9)");
+            System.out.println("7.  Design Department           (Iter2)");
+            System.out.println("8.  Marketing & Campaigns       (Iter2)");
+            System.out.println("9.  Production Department       (Iter2)");
+            System.out.println("10. Sales & Retail              (UC9)");
+            System.out.println("11. Finance                     (Iter2)");
+            System.out.println("12. Administration              (Iter2)");
             System.out.println("0.  Exit");
             System.out.print("Select: ");
 
@@ -46,11 +46,16 @@ public class Main {
                 case "4" -> new MaterialController(scanner).menu();
                 case "5" -> new MaterialOrderController(scanner).menu();
                 case "6" -> new ProductionBatchController(scanner).menu();
+
                 case "7" -> new DesignDepartmentController(scanner).employeeAssignmentMenu();
                 case "8" -> new DesignDepartmentController(scanner).menu();
+  
                 case "9" -> new AdCampaignController(scanner).menu();
                 case "10" -> new ProductionDepartmentController(scanner).menu();
                 case "11" -> new SalesRetailController(scanner).menu();
+                case "12" -> new FinanceController(scanner).menu();
+                case "13" -> new AdministrationController(scanner).menu();
+
                 case "0" -> running = false;
                 default  -> System.out.println("Invalid option. Try again.");
             }
