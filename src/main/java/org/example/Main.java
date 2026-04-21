@@ -55,13 +55,20 @@ public class Main {
                 case "7" -> productionAllocationController.allocateGarmentToProduction();
                 case "8" -> {
                     productionAllocationController.viewProductionAllocations();
-                    System.out.println("\n1. Track New Consumption\n2. View All Records\n3. View By Allocation");
+                    System.out.println("\n1. Track New Consumption\n2. View All Records\n3. View By Allocation\n4. Record Material Usage");
                     System.out.print("Choice: ");
-                    int consumptionChoice = Integer.parseInt(scanner.nextLine());
+                    int consumptionChoice;
+                    try {
+                        consumptionChoice = Integer.parseInt(scanner.nextLine().trim());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Invalid option. Try again.");
+                        break;
+                    }
                     switch (consumptionChoice) {
                         case 1 -> materialConsumptionController.trackMaterialConsumption();
                         case 2 -> materialConsumptionController.viewConsumptionRecords();
                         case 3 -> materialConsumptionController.viewByAllocation();
+                        case 4 -> materialConsumptionController.recordMaterialUsage();
                         default -> System.out.println("Invalid option. Try again.");
                     }
                 }
