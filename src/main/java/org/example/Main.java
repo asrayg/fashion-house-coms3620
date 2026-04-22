@@ -73,7 +73,7 @@ public class Main {
                 case "11" -> new ProductionBatchController(scanner).menu();
                 case "12" -> new DesignDepartmentController(scanner).employeeAssignmentMenu();
                 case "13" -> new ProductionDepartmentController(scanner).menu();
-                case "14" -> new ProductionDepartmentController(scanner).menu();
+                case "14" -> new ProductionDepartmentController(scanner).updateProductionStatus();
                 case "15" -> new MaterialOrderController(scanner).menu();
                 case "0"  -> running = false;
                 default   -> System.out.println("Invalid option. Try again.");
