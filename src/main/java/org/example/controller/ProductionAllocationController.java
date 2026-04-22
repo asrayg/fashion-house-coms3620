@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class ProductionAllocationController {
-    private static final String FILE = "data/production_allocations.csv";
+    private static final String FILE = "data/production/production_allocations.csv";
     private Scanner scanner;
 
     public ProductionAllocationController(Scanner scanner) {

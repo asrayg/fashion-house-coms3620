@@ -11,7 +11,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class PerformanceMetricController {
-    private static final String FILE = "data/performance_metrics.csv";
+    private static final String FILE = "data/hr/performance_metrics.csv";
     private Scanner scanner;
 
     public PerformanceMetricController(Scanner scanner) {
@@ -33,9 +33,9 @@ public class PerformanceMetricController {
             return;
         }
 
-        List<String> allocationLines = FileManager.readLines("data/production_allocations.csv");
-        List<String> consumptionLines = FileManager.readLines("data/material_consumption.csv");
-        List<String> qualityLines = FileManager.readLines("data/quality_checkpoints.csv");
+        List<String> allocationLines = FileManager.readLines("data/production/production_allocations.csv");
+        List<String> consumptionLines = FileManager.readLines("data/materials/material_consumption.csv");
+        List<String> qualityLines = FileManager.readLines("data/production/quality_checkpoints.csv");
 
         int totalDesigns = 0;
         int totalQuantity = 0;

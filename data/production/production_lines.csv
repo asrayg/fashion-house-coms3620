@@ -1,0 +1,5 @@
+1,Cutting Line A,120,ACTIVE,Building A - Floor 1
+2,Sewing Line B,90,ACTIVE,Building A - Floor 2
+3,Finishing Line C,75,MAINTENANCE,Building B - Floor 1
+4,Assembly Line D,100,ACTIVE,Building B - Floor 2
+5,Embellishment Line E,40,ACTIVE,Building C - Floor 1

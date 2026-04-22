@@ -1,0 +1,8 @@
+1,1,BATCH-001,60,58,2,2026-04-20,Minor thread pull on 2 units - easily reworked,low,approved
+2,2,BATCH-002,50,49,1,2026-04-22,One unit with crooked embroidery - sent to rework,medium,rework
+3,3,BATCH-003,250,248,2,2026-04-28,Final QC - 2 units with measurement variance,low,approved
+4,4,BATCH-004,35,32,3,2026-04-21,Vegan leather peeling on 3 units - material issue,high,rework
+5,5,BATCH-005,40,40,0,2026-04-23,All units passed initial inspection,low,approved
+6,8,BATCH-008,100,99,1,2026-04-27,One tee with printing misalignment,low,approved
+7,8,BATCH-008,200,197,3,2026-04-28,Second QC round - minor stitching issues on 3,low,approved
+8,2,BATCH-002,80,78,2,2026-04-24,Color consistency check - 2 units slightly off shade,medium,rework

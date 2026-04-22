@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class MaterialController {
 
-    static final String FILE = "data/materials.csv";
+    static final String FILE = "data/materials/materials.csv";
 
     private final Scanner scanner;
 

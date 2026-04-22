@@ -23,13 +23,13 @@ import java.util.Scanner;
  */
 public class ProductionDepartmentController {
 
-    private static final String LINE_FILE = "data/production_lines.csv";
-    private static final String BATCH_FILE = "data/production_batches.csv";
-    private static final String ALLOCATION_FILE = "data/production_allocations.csv";
-    private static final String CONSUMPTION_FILE = "data/material_consumption.csv";
-    private static final String QUALITY_FILE = "data/quality_checkpoints.csv";
-    private static final String SCHEDULE_FILE = "data/production_schedules.csv";
-    private static final String PERFORMANCE_FILE = "data/performance_metrics.csv";
+    private static final String LINE_FILE = "data/production/production_lines.csv";
+    private static final String BATCH_FILE = "data/production/production_batches.csv";
+    private static final String ALLOCATION_FILE = "data/production/production_allocations.csv";
+    private static final String CONSUMPTION_FILE = "data/materials/material_consumption.csv";
+    private static final String QUALITY_FILE = "data/production/quality_checkpoints.csv";
+    private static final String SCHEDULE_FILE = "data/production/production_schedules.csv";
+    private static final String PERFORMANCE_FILE = "data/hr/performance_metrics.csv";
 
     private final Scanner scanner;
     private final ProductionAllocationController productionAllocationController;

@@ -10,7 +10,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class MaterialConsumptionController {
-    private static final String FILE = "data/material_consumption.csv";
+    private static final String FILE = "data/materials/material_consumption.csv";
     private Scanner scanner;
 
     public MaterialConsumptionController(Scanner scanner) {

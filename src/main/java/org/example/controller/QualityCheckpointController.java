@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.time.LocalDate;
 
 public class QualityCheckpointController {
-    private static final String FILE = "data/quality_checkpoints.csv";
+    private static final String FILE = "data/production/quality_checkpoints.csv";
     private static final double QUALITY_THRESHOLD = 95.0;
     private Scanner scanner;
 

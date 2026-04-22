@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class ExpenseController {
 
-    static final String FILE = "data/expenses.csv";
+    static final String FILE = "data/finance/expenses.csv";
 
     private final Scanner scanner;
 

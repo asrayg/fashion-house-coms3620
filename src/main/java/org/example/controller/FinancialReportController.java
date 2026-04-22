@@ -21,13 +21,13 @@ import java.util.Scanner;
  */
 public class FinancialReportController {
 
-    static final String FILE = "data/financial_reports.csv";
+    static final String FILE = "data/finance/financial_reports.csv";
 
     private static final String SALES_FILE    = "data/sales/sales.csv";
-    private static final String ORDERS_FILE   = "data/material_orders.csv";
+    private static final String ORDERS_FILE   = "data/materials/material_orders.csv";
     private static final String PAYROLL_FILE  = PayrollController.FILE;
     private static final String EXPENSES_FILE = ExpenseController.FILE;
-    private static final String CAMPAIGNS_FILE = "data/campaigns.csv";
+    private static final String CAMPAIGNS_FILE = "data/marketing/campaigns.csv";
 
     private final Scanner scanner;
 

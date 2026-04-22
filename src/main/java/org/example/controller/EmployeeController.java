@@ -12,7 +12,7 @@ import java.util.Scanner;
  */
 public class EmployeeController {
 
-    static final String FILE = "data/employees.csv";
+    static final String FILE = "data/hr/employees.csv";
 
     private final Scanner scanner;
 

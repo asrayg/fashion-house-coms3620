@@ -32,7 +32,7 @@ import java.util.stream.Collectors;
  */
 public class AdCampaignController {
 
-    public static final String FILE = "data/campaigns.csv";
+    public static final String FILE = "data/marketing/campaigns.csv";
     private static final double COLLECTION_BUDGET_LIMIT = 50000.0;
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 

@@ -29,9 +29,9 @@ import java.util.stream.Collectors;
  */
 public class ProductionBatchController {
 
-    static final String BATCH_FILE = "data/production_batches.csv";
-    static final String BOM_FILE   = "data/batch_material_requirements.csv";
-    static final String LINE_FILE  = "data/production_lines.csv";
+    static final String BATCH_FILE = "data/production/production_batches.csv";
+    static final String BOM_FILE   = "data/materials/batch_material_requirements.csv";
+    static final String LINE_FILE  = "data/production/production_lines.csv";
 
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private static final int MAX_BATCH_QUANTITY = 10000;

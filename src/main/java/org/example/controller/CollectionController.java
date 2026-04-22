@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class CollectionController {
 
-    static final String FILE = "data/collections.csv";
+    static final String FILE = "data/design/collections.csv";
 
     private final Scanner scanner;
 

@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class GarmentDesignController {
 
-    static final String FILE = "data/garments.csv";
+    static final String FILE = "data/design/garments.csv";
 
     private final Scanner scanner;
 

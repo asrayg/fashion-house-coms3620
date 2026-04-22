@@ -1,0 +1,10 @@
+1,1,1,2026-05-01,2026-05-03,16,Industrial cutters and pattern tables,Minor material bottleneck on silk,feasible,2026-04-19
+2,2,2,2026-04-28,2026-05-01,24,Sewing machines and embroidery unit,Potential line overlap with batch 5,at-risk,2026-04-18
+3,3,1,2026-04-30,2026-05-01,8,Standard cutting toolkit,,feasible,2026-04-10
+4,4,4,2026-05-10,2026-05-15,40,Assembly stations and heat press,Waiting on vegan leather delivery,at-risk,2026-04-20
+5,5,2,2026-05-03,2026-05-06,24,Sewing machines and sergers,,feasible,2026-04-21
+6,6,4,2026-05-06,2026-05-08,16,Screen printing and assembly,,feasible,2026-04-21
+7,7,1,2026-05-12,2026-05-14,16,Cutting and button station,Button shipment due May 10,feasible,2026-04-20
+8,8,4,2026-04-25,2026-04-29,32,High-speed cut-and-sew line,Weekend adjacency - overtime needed,at-risk,2026-04-15
+9,9,5,2026-05-20,2026-05-27,56,Hand-embellishment stations and QC,Skilled labor availability,at-risk,2026-04-21
+10,10,2,2026-05-15,2026-05-19,32,Knitting machines and finishing,,feasible,2026-04-21

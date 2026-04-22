@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class ProductionScheduleController {
-    private static final String FILE = "data/production_schedules.csv";
+    private static final String FILE = "data/production/production_schedules.csv";
     private Scanner scanner;
 
     public ProductionScheduleController(Scanner scanner) {
@@ -18,7 +18,7 @@ public class ProductionScheduleController {
     }
 
     public void createProductionSchedule() {
-        List<String> allocationLines = FileManager.readLines("data/production_allocations.csv");
+        List<String> allocationLines = FileManager.readLines("data/production/production_allocations.csv");
         if (allocationLines.isEmpty()) {
             System.out.println("No production allocations found.");
             return;

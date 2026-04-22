@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class MaterialOrderController {
 
-    static final String FILE = "data/material_orders.csv";
+    static final String FILE = "data/materials/material_orders.csv";
 
     private final Scanner scanner;
 

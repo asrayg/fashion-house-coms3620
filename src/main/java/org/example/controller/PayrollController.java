@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class PayrollController {
 
-    static final String FILE = "data/payroll.csv";
+    static final String FILE = "data/hr/payroll.csv";
     private static final double DEFAULT_TAX_RATE = 22.0;
 
     private final Scanner scanner;

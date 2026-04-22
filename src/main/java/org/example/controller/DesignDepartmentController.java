@@ -30,10 +30,10 @@ import java.util.stream.Collectors;
  */
 public class DesignDepartmentController {
 
-    static final String DEPT_FILE     = "data/design_departments.csv";
-    static final String REVIEW_FILE   = "data/design_reviews.csv";
-    static final String REVISION_FILE = "data/design_revisions.csv";
-    static final String ASSIGN_FILE   = "data/department_employee_assignments.csv";
+    static final String DEPT_FILE     = "data/design/design_departments.csv";
+    static final String REVIEW_FILE   = "data/design/design_reviews.csv";
+    static final String REVISION_FILE = "data/design/design_revisions.csv";
+    static final String ASSIGN_FILE   = "data/design/department_employee_assignments.csv";
 
     private static final DateTimeFormatter DATE_FMT = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
