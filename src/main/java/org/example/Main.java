@@ -16,7 +16,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("============================================");
-        System.out.println("   Fashion House Management System v2.0    ");
+        System.out.println("   Fashion House Management System v3.0");
         System.out.println("============================================");
 
         boolean running = true;
@@ -44,6 +44,8 @@ public class Main {
             System.out.println("14. Update Production Status    — Billy");
             System.out.println("15. Receive Material Shipment   — Vinayak");
             System.out.println();
+            System.out.println("=== ITERATION 3 ===");
+            System.out.println("16. Research & Trend Analysis   — Billy (Observer pattern)");
             System.out.println("0.  Exit");
             System.out.print("Select: ");
 
@@ -75,6 +77,7 @@ public class Main {
                 case "13" -> new ProductionDepartmentController(scanner).menu();
                 case "14" -> new ProductionDepartmentController(scanner).updateProductionStatus();
                 case "15" -> new MaterialOrderController(scanner).menu();
+                case "16" -> new ResearchTrendController(scanner).menu();
                 case "0"  -> running = false;
                 default   -> System.out.println("Invalid option. Try again.");
             }
