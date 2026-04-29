@@ -1,12 +1,15 @@
 package org.example.model;
 
+import org.example.pattern.visitor.DepartmentVisitor;
+import org.example.pattern.visitor.VisitableDepartment;
+
 /**
  * Represents a design department within the fashion house.
  * Each department focuses on a specialization and season, has a budget, and a head designer.
  *
  * CSV format: id,name,headDesigner,budget,spentBudget,season,status,specialization,maxCapacity
  */
-public class DesignDepartment {
+public class DesignDepartment implements VisitableDepartment {
 
     public enum Status { ACTIVE, PLANNING, ON_HOLD, CLOSED }
 
@@ -32,6 +35,11 @@ public class DesignDepartment {
         this.status = status;
         this.specialization = specialization;
         this.maxCapacity = maxCapacity;
+    }
+
+    @Override
+    public void accept(DepartmentVisitor visitor) {
+        visitor.visit(this);
     }
 
     public String toCSV() {
