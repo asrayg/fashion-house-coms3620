@@ -292,17 +292,26 @@ public class CustomerRelationsDepartmentController {
         String resolutionText = readNonEmpty("Resolution description: ");
         if (resolutionText == null) return;
 
+        String resolvedBy;
+        if (complaint.getStatus() == CustomerComplaint.Status.ESCALATED) {
+            System.out.println("This complaint is ESCALATED — manager approval required.");
+            String managerName = readNonEmpty("Manager name: ");
+            if (managerName == null) return;
+            resolvedBy = managerName;
+        } else {
+            resolvedBy = "Agent";
+        }
+
         complaint.setStatus(CustomerComplaint.Status.RESOLVED);
         updateComplaint(complaint);
 
-        // Write a simple audit entry
         int auditId = FileManager.nextId(AUDIT_FILE);
-        String csv = auditId + "," + complaintId + ",RESOLVED,Agent,"
+        String csv = auditId + "," + complaintId + ",RESOLVED," + resolvedBy + ","
                    + resolutionText.replace(",", ";") + ",0.00,"
                    + java.time.LocalDateTime.now();
         FileManager.appendLine(AUDIT_FILE, csv);
 
-        System.out.println("Complaint #" + complaintId + " marked as RESOLVED.");
+        System.out.println("Complaint #" + complaintId + " marked as RESOLVED by " + resolvedBy + ".");
     }
 
     // =========================================================================
