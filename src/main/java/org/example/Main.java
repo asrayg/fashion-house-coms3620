@@ -46,8 +46,11 @@ public class Main {
             System.out.println("14. Update Production Status    — Billy");
             System.out.println("15. Receive Material Shipment   — Vinayak");
             System.out.println();
-            System.out.println("=== E-COMMERCE (Iteration 3) ===");
-            System.out.println("16. E-Commerce & Online Orders   — Anoop");
+            System.out.println("=== ITERATION 3 ===");
+            System.out.println("16. Wholesale & Retail Partnerships — Asray");
+            System.out.println("17. Customer Relations               — Vinayak");
+            System.out.println("18. Legal & Compliance Department    — Sofia");
+            System.out.println("19. E-Commerce & Online Orders        — Anoop");
             System.out.println();
             System.out.println("0.  Exit");
             System.out.print("Select: ");
@@ -80,7 +83,10 @@ public class Main {
                 case "13" -> new ProductionDepartmentController(scanner).menu();
                 case "14" -> new ProductionDepartmentController(scanner).updateProductionStatus();
                 case "15" -> new MaterialOrderController(scanner).menu();
-                case "16" -> new ECommerceController(scanner).menu();
+                case "16" -> new PartnershipDepartmentController(scanner).menu();
+                case "17" -> new CustomerRelationsDepartmentController(scanner).menu();
+                case "18" -> new LegalAndComplianceController(scanner).menu();
+                case "19" -> new ECommerceController(scanner).menu();
                 case "0"  -> running = false;
                 default   -> System.out.println("Invalid option. Try again.");
             }

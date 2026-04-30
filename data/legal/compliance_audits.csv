@@ -1,0 +1,6 @@
+id,auditDate,auditType,department,findings,status,severity,assignedTo,dueDate,completionDate,notes,createdDate
+1,2026-04-01,LABOR_STANDARDS,Production,Insufficient break periods during peak production,IN_PROGRESS,HIGH,John Smith,2026-05-01,,Review shift schedules and compliance logs,2026-04-01
+2,2026-04-05,ENVIRONMENTAL,Materials,Waste disposal procedures need documentation,OPEN,MEDIUM,Sarah Johnson,2026-05-10,,Materials team must update disposal records,2026-04-05
+3,2026-04-10,SAFETY,Production,Missing equipment maintenance logs,RESOLVED,HIGH,John Smith,2026-04-30,2026-04-28,Maintenance records have been compiled and filed,2026-04-10
+4,2026-04-12,DATA_PRIVACY,Finance,Employee data access logs incomplete,IN_PROGRESS,CRITICAL,Maria Garcia,2026-04-25,,Finance dept implementing enhanced access controls,2026-04-12
+5,2026-04-15,SUPPLIER,Partnerships,Supplier documentation outdated,OPEN,MEDIUM,David Lee,2026-05-15,,Partnerships team requested updated supplier certifications,2026-04-15
