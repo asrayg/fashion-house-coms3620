@@ -2,10 +2,10 @@ package org.example.controller;
 
 import org.example.model.ComplianceAudit;
 import org.example.model.ComplianceViolation;
-import org.example.pattern.observer.ComplianceNotificationCenter;
-import org.example.pattern.observer.ExecutiveComplianceObserver;
-import org.example.pattern.observer.FinanceComplianceObserver;
-import org.example.pattern.observer.ProductionComplianceObserver;
+import org.example.pattern.legalcomplianceobserver.ComplianceNotificationCenter;
+import org.example.pattern.legalcomplianceobserver.ExecutiveComplianceObserver;
+import org.example.pattern.legalcomplianceobserver.FinanceComplianceObserver;
+import org.example.pattern.legalcomplianceobserver.ProductionComplianceObserver;
 import org.example.util.FileManager;
 
 import java.util.List;
@@ -32,7 +32,6 @@ public class LegalAndComplianceController {
     private final Scanner scanner;
     private final ComplianceAuditController complianceAuditController;
     private final ComplianceViolationController complianceViolationController;
-    private boolean observersInitialized = false;
 
     public LegalAndComplianceController(Scanner scanner) {
         this.scanner = scanner;
@@ -140,7 +139,6 @@ public class LegalAndComplianceController {
         ComplianceNotificationCenter.attach(execObserver);
 
         System.out.println("✓ Default observers initialized and subscribed to compliance notifications.");
-        observersInitialized = true;
     }
 
     private void viewSubscribedObservers() {

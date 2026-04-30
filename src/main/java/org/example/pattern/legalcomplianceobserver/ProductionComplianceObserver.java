@@ -1,4 +1,4 @@
-package org.example.pattern.observer;
+package org.example.pattern.legalcomplianceobserver;
 
 import org.example.model.ComplianceViolation;
 
