@@ -2,10 +2,10 @@ package org.example.controller;
 
 import org.example.model.ComplianceAudit;
 import org.example.model.ComplianceViolation;
-import org.example.pattern.ComplianceNotificationCenter;
-import org.example.pattern.ExecutiveComplianceObserver;
-import org.example.pattern.FinanceComplianceObserver;
-import org.example.pattern.ProductionComplianceObserver;
+import org.example.pattern.observer.ComplianceNotificationCenter;
+import org.example.pattern.observer.ExecutiveComplianceObserver;
+import org.example.pattern.observer.FinanceComplianceObserver;
+import org.example.pattern.observer.ProductionComplianceObserver;
 import org.example.util.FileManager;
 
 import java.util.List;

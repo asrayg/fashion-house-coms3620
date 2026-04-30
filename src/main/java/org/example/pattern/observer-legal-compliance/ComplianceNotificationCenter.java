@@ -1,4 +1,4 @@
-package org.example.pattern;
+package org.example.pattern.observer;
 
 import org.example.model.ComplianceViolation;
 import java.util.ArrayList;

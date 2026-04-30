@@ -1,7 +1,7 @@
 package org.example.controller;
 
 import org.example.model.ComplianceViolation;
-import org.example.pattern.ComplianceNotificationCenter;
+import org.example.pattern.observer.ComplianceNotificationCenter;
 import org.example.util.FileManager;
 
 import java.time.LocalDate;
