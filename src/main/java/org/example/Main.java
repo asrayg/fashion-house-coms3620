@@ -46,6 +46,7 @@ public class Main {
             System.out.println();
             System.out.println("=== ITERATION 3 ===");
             System.out.println("16. Wholesale & Retail Partnerships — Asray");
+            System.out.println("17. Legal & Compliance Department    — Sofia");
             System.out.println();
             System.out.println("0.  Exit");
             System.out.print("Select: ");
@@ -79,6 +80,7 @@ public class Main {
                 case "14" -> new ProductionDepartmentController(scanner).updateProductionStatus();
                 case "15" -> new MaterialOrderController(scanner).menu();
                 case "16" -> new PartnershipDepartmentController(scanner).menu();
+                case "17" -> new LegalAndComplianceController(scanner).menu();
                 case "0"  -> running = false;
                 default   -> System.out.println("Invalid option. Try again.");
             }

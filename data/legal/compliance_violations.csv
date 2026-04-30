@@ -1,0 +1,8 @@
+id,auditId,violationType,description,severity,affectedDepartment,status,remediationDueDate,remediationCompletionDate,notes,createdDate
+1,1,Inadequate Break Schedules,Production workers not receiving mandated breaks during extended shifts,HIGH,Production,REMEDIATION_IN_PROGRESS,2026-05-01,,Update production schedules to include break periods,2026-04-01
+2,1,Wage Compliance Issue,Certain shifts not properly classified for overtime compensation,CRITICAL,Production,UNDER_REVIEW,2026-05-15,,HR and Finance reviewing compensation calculations,2026-04-02
+3,2,Waste Documentation,Environmental waste logs lack proper tracking and disposal documentation,MEDIUM,Materials,REPORTED,2026-05-10,,Materials team creating comprehensive waste tracking system,2026-04-05
+4,3,Safety Equipment Audit,Missing maintenance records for production line safety equipment,HIGH,Production,REMEDIATED,2026-04-28,2026-04-28,All equipment maintenance logs now current and compliant,2026-04-10
+5,4,Data Access Unauthorized,Unauthorized access attempts detected in employee payroll database,CRITICAL,Finance,UNDER_REVIEW,2026-04-25,,Security audit in progress; access controls being enhanced,2026-04-12
+6,4,Incomplete Audit Trail,Data access logs missing entries from February 2026,HIGH,Finance,REMEDIATION_IN_PROGRESS,2026-05-01,,Finance reconstructing access logs from backup records,2026-04-13
+7,5,Supplier Certification Expired,Primary fabric supplier certification expired 3 months ago,MEDIUM,Partnerships,REPORTED,2026-05-15,,Partnerships requesting renewal and temporary alternative supplier,2026-04-15
