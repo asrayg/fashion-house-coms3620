@@ -1,0 +1,18 @@
+1,1,Received wrong size; item did not match the order description,PRODUCT_QUALITY,LOW,RESOLVED,2025-10-05
+2,2,Was charged twice for the same order,BILLING,HIGH,RESOLVED,2025-11-12
+3,3,Package arrived three weeks late with no tracking updates,DELIVERY,MEDIUM,RESOLVED,2026-01-08
+4,4,Sales associate was dismissive and refused to process a valid return,SERVICE,MEDIUM,RESOLVED,2026-02-14
+5,5,Silk blouse had a visible tear along the seam upon unboxing,PRODUCT_QUALITY,HIGH,RESOLVED,2026-03-01
+6,1,Promotional discount was not applied at checkout,BILLING,LOW,ESCALATED,2026-03-28
+7,3,Item description on website did not match the product received,PRODUCT_QUALITY,LOW,OPEN,2026-04-10
+8,2,Repeated billing errors across three consecutive orders,BILLING,CRITICAL,ESCALATED,2026-04-18
+9,6,Dress seams came undone after first wash despite care label instructions,PRODUCT_QUALITY,MEDIUM,RESOLVED,2025-08-14
+10,6,Store credit from previous return was not applied to new order,BILLING,LOW,OPEN,2026-04-20
+11,7,Courier left package outside in rain; contents water-damaged on arrival,DELIVERY,HIGH,OPEN,2026-03-15
+12,7,Invoice showed incorrect tax rate; overcharged by roughly 8 percent,BILLING,LOW,RESOLVED,2026-02-28
+13,8,Evening gown color differs significantly from product photos; unusable for event,PRODUCT_QUALITY,CRITICAL,ESCALATED,2025-12-01
+14,8,Online chat support disconnected mid-session and issue was never followed up,SERVICE,MEDIUM,OPEN,2026-04-05
+15,9,Express shipping paid but standard delivery used; event deadline missed,DELIVERY,LOW,OPEN,2026-04-22
+16,5,Cashmere sweater pilling heavily after two wears; below expected quality,PRODUCT_QUALITY,MEDIUM,RESOLVED,2026-03-10
+17,10,My hat was uncomfortable,PRODUCT_QUALITY,LOW,ESCALATED,2026-04-30
+18,11,Someone was rude to me,SERVICE,MEDIUM,RESOLVED,2026-04-30

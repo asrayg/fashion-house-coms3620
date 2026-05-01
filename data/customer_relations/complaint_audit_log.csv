@@ -1,0 +1,15 @@
+1,1,RESOLVED,Agent,Replacement item shipped via express delivery; original returned,0.00,2025-10-08T10:15:00
+2,2,RESOLVED,Agent,Full refund of duplicate charge issued; banking team notified,200.00,2025-11-18T14:30:00
+3,3,RESOLVED,Agent,Voucher issued for the delay; carrier compensation filed on customer behalf,50.00,2026-01-12T09:45:00
+4,5,ESCALATED,System,Customer reported visible manufacturing defect on premium item; requires senior review,0.00,2026-03-03T11:00:00
+5,8,ESCALATED,System,Pattern of repeated billing errors flagged for finance team investigation,0.00,2026-04-19T08:20:00
+6,9,RESOLVED,Agent,Replacement dress dispatched; quality team informed of washing label issue,30.00,2025-08-17T14:00:00
+7,12,RESOLVED,Agent,Invoice reissued with correct tax rate; difference refunded to original payment method,0.00,2026-03-02T09:30:00
+8,13,ESCALATED,System,Color discrepancy confirmed by product team; full refund pending director sign-off,0.00,2025-12-03T16:45:00
+9,16,RESOLVED,Agent,Exchange processed for new unit; quality flagged to production department,0.00,2026-03-13T11:20:00
+10,18,RESOLVED,Agent,we apologized,0.00,2026-04-30T00:13:35.354646
+11,17,ESCALATED,System,this is a serious issue,0.00,2026-04-30T00:13:50.380967
+12,4,ESCALATED,System,this is serious,0.00,2026-04-30T00:26:47.114766
+13,4,RESOLVED,Agent,we needed to resolve,0.00,2026-04-30T00:27:05.133431
+14,6,ESCALATED,System,idk,0.00,2026-04-30T00:27:48.373289
+15,5,RESOLVED,Vinayak,idk,0.00,2026-04-30T00:28:01.840905

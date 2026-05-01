@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class ProductSpecificationController {
 
-    static final String FILE = "data/design/specifications.csv";
+    public static final String FILE = "data/design/specifications.csv";
 
     private final Scanner scanner;
 
