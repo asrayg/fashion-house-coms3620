@@ -18,7 +18,7 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("============================================");
-        System.out.println("   Fashion House Management System v2.0    ");
+        System.out.println("   Fashion House Management System v3.0");
         System.out.println("============================================");
 
         boolean running = true;
@@ -48,9 +48,10 @@ public class Main {
             System.out.println();
             System.out.println("=== ITERATION 3 ===");
             System.out.println("16. Wholesale & Retail Partnerships — Asray");
-            System.out.println("17. Customer Relations               — Vinayak");
-            System.out.println("18. Legal & Compliance Department    — Sofia");
-            System.out.println("19. E-Commerce & Online Orders        — Anoop");
+            System.out.println("17. Customer Relations              — Vinayak");
+            System.out.println("18. Legal & Compliance Department   — Sofia");
+            System.out.println("19. E-Commerce & Online Orders      — Anoop");
+            System.out.println("20. Research & Trend Analysis       — Billy");
             System.out.println();
             System.out.println("0.  Exit");
             System.out.print("Select: ");
@@ -87,6 +88,7 @@ public class Main {
                 case "17" -> new CustomerRelationsDepartmentController(scanner).menu();
                 case "18" -> new LegalAndComplianceController(scanner).menu();
                 case "19" -> new ECommerceController(scanner).menu();
+                case "20" -> new ResearchTrendController(scanner).menu();
                 case "0"  -> running = false;
                 default   -> System.out.println("Invalid option. Try again.");
             }
