@@ -51,7 +51,7 @@ public class Main {
             System.out.println("17. Customer Relations              — Vinayak");
             System.out.println("18. Legal & Compliance Department   — Sofia");
             System.out.println("19. E-Commerce & Online Orders      — Anoop");
-            System.out.println("20. Research & Trend Analysis       — Billy (Observer pattern)");
+            System.out.println("20. Research & Trend Analysis       — Billy");
             System.out.println();
             System.out.println("0.  Exit");
             System.out.print("Select: ");
