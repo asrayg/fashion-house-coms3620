@@ -2,8 +2,6 @@ package org.example.observer;
 
 import org.example.model.MarketTrend;
 import org.example.model.TrendAlert;
-import org.example.strategy.ProductionRelevanceStrategy;
-import org.example.strategy.TrendRelevanceStrategy;
 import org.example.util.FileManager;
 
 import java.time.LocalDate;
@@ -18,14 +16,8 @@ public class ProductionDeptObserver implements TrendObserver {
     private static final String DEPARTMENT  = "Production";
     private static final String ALERTS_FILE = "data/research/trend_alerts.csv";
 
-    private final TrendRelevanceStrategy strategy;
 
     public ProductionDeptObserver() {
-        this(new ProductionRelevanceStrategy());
-    }
-
-    public ProductionDeptObserver(TrendRelevanceStrategy strategy) {
-        this.strategy = strategy;
     }
 
     @Override
@@ -35,18 +27,21 @@ public class ProductionDeptObserver implements TrendObserver {
 
     @Override
     public void onTrendLogged(MarketTrend trend) {
-        if (!strategy.isRelevant(trend)) {
+        // Hardcoded relevance logic for Production department
+        if (trend.getCategory() != org.example.model.MarketTrend.Category.FABRIC) {
             System.out.println("  [Observer] Production Dept filtered out '" + trend.getName() + "' (not relevant).");
             return;
         }
+        TrendAlert.Priority priority = TrendAlert.Priority.LOW;
+        String message = "Production Alert: " + trend.getName() + " is relevant to production operations.";
         TrendAlert alert = new TrendAlert(
             FileManager.nextId(ALERTS_FILE),
             trend.getId(),
             DEPARTMENT,
-            strategy.priorityFor(trend),
+            priority,
             LocalDate.now().toString(),
             false,
-            strategy.buildMessage(trend)
+            message
         );
         FileManager.appendLine(ALERTS_FILE, alert.toCSV());
         System.out.println("  [Observer] Production Dept notified ("
